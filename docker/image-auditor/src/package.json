@@ -1,0 +1,15 @@
+{
+  "name": "auditor",
+  "version": "1.0.0",
+  "description": "Auditor that listen musician and know who is alive",
+  "main": "auditor.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Axel Vallon et Lev Pozniakoff",
+  "license": "ISC",
+  "dependencies": {
+    "dgram": "^1.0.1",
+    "moment": "^2.29.1"
+  }
+}
