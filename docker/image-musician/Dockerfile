@@ -5,4 +5,4 @@ RUN apt-get update && \
 
 COPY src /opt/app
 
-CMD ["node", "/opt/app/musician.js"]
+ENTRYPOINT ["node", "/opt/app/musician.js"]
