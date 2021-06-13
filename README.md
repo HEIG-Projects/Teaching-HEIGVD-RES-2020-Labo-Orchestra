@@ -91,10 +91,10 @@ You should then be able to kill the **Musician** container, wait 5 seconds and c
 You should then be able to start several **Musician** containers with the following commands:
 
 ```
-$ docker run -d res/musician piano
-$ docker run -d res/musician flute
-$ docker run -d res/musician flute
-$ docker run -d res/musician drum
+docker run -d res/musician piano
+docker run -d res/musician flute
+docker run -d res/musician flute
+docker run -d res/musician drum
 ```
 When you connect to the TCP interface of the **Auditor**, you should receive an array of musicians that corresponds to your commands. You should also use `tcpdump` to monitor the UDP trafic in your system.
 
@@ -108,9 +108,9 @@ When you connect to the TCP interface of the **Auditor**, you should receive an 
 |Question | Who is going to **send UDP datagrams** and **when**? |
 | | Les conteneurs de l'image `res/musiciens`, avec un intervalle de une seconde. |
 |Question | Who is going to **listen for UDP datagrams** and what should happen when a datagram is received? |
-| | *Enter your response here...* |
+| | Le conteneur de l'image res/orchestra. |
 |Question | What **payload** should we put in the UDP datagrams? |
-| | *Enter your response here...* |
+| | un `id` unique, qui va permettre d'identifier le musicien pour chacune de ces requête, et aussi le "son" qu'il emet avec son instrument. |
 |Question | What **data structures** do we need in the UDP sender and receiver? When will we update these data structures? When will we query these data structures? |
 | | *Enter your response here...* |
 

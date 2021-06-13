@@ -26,11 +26,7 @@ const { v4: uuidv4 } = require('uuid');
 /*
  * Let's define a javascript class for our musician.
  */
-function musician(sound, uuid) {
-		var content = {
-			uuid: uuid,
-			sound: sound
-		};
+function musician(content) {
 		var payload = JSON.stringify(content);
 		message = Buffer.from(payload);
 		socket.send(message, 0, message.length, protocol.PROTOCOL_PORT, protocol.PROTOCOL_MULTICAST_ADDRESS, function(err, bytes) {
@@ -43,7 +39,9 @@ var sound = map.get(instrument);
 if (!sound){
     console.log("not existing instrument");
     process.exit(1);
-}
-var uuid = uuidv4();
-
-setInterval(musician, 200, sound, uuid);
+ 
+var content = {
+	uuid: uuidv4(),
+	sound: sound
+};
+setInterval(musician, 1000, content);
