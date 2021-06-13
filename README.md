@@ -108,9 +108,9 @@ When you connect to the TCP interface of the **Auditor**, you should receive an 
 |Question | Who is going to **send UDP datagrams** and **when**? |
 | | Les conteneurs de l'image `res/musiciens`, avec un intervalle de une seconde. |
 |Question | Who is going to **listen for UDP datagrams** and what should happen when a datagram is received? |
-| | Le conteneur de l'image res/orchestra. |
+| | Le conteneur de l'image res/orchestra. Il va enregistrer en local tous les musiciens actif (qui envoie au moins bruit toute les 5 secondes). |
 |Question | What **payload** should we put in the UDP datagrams? |
-| | un `id` unique, qui va permettre d'identifier le musicien pour chacune de ces requête, et aussi le "son" qu'il emet avec son instrument. |
+| | un `id` unique, qui va permettre d'identifier le musicien pour chacune de ces requêtes, et aussi le "son" qu'il emet avec son instrument. |
 |Question | What **data structures** do we need in the UDP sender and receiver? When will we update these data structures? When will we query these data structures? |
 | | *Enter your response here...* |
 
@@ -120,17 +120,17 @@ When you connect to the TCP interface of the **Auditor**, you should receive an 
 | #  | Topic |
 | ---  | --- |
 |Question | In a JavaScript program, if we have an object, how can we **serialize it in JSON**? |
-| | *Enter your response here...*  |
+| | `JSON.stringify( valeur[, remplaçant [, espace]])` |
 |Question | What is **npm**?  |
-| | *Enter your response here...*  |
+| | Le paquet manager le plus utilisé pour le développement d'application avec NodeJs. |
 |Question | What is the `npm install` command and what is the purpose of the `--save` flag?  |
-| | *Enter your response here...*  |
+| | `npm install` va permettre de télécharger en local un package pour l'utiliser dans une application. Initialement, le flag `--save` permettait de mettre les librairies installées dans les dépendance de `package.json`, seulement cette option n'est plus necessaire depuis la version `5.0.0` de `npm`. |
 |Question | How can we use the `https://www.npmjs.com/` web site?  |
-| | *Enter your response here...*  |
+| | On peut l'utiliser pour se documenter sur certains package disponible, et aussi publier non propre packages. |
 |Question | In JavaScript, how can we **generate a UUID** compliant with RFC4122? |
-| | *Enter your response here...*  |
+| | Avec la librairie `uuid`, que l'on peut exploiter dans nos projets avec`const { v4: uuidv4 } = require('uuid');` et importer en local avec `npm` |
 |Question | In Node.js, how can we execute a function on a **periodic** basis? |
-| | *Enter your response here...*  |
+| | Il faut utiliser la fonction de JavaScript `setInterval` |
 |Question | In Node.js, how can we **emit UDP datagrams**? |
 | | *Enter your response here...*  |
 |Question | In Node.js, how can we **access the command line arguments**? |
@@ -144,15 +144,15 @@ When you connect to the TCP interface of the **Auditor**, you should receive an 
 |Question | How do we **define and build our own Docker image**?|
 | | *Enter your response here...*  |
 |Question | How can we use the `ENTRYPOINT` statement in our Dockerfile?  |
-| | *Enter your response here...*  |
+| | `ENTRYPOINT ["node", "/opt/app/musician.js"]` |
 |Question | After building our Docker image, how do we use it to **run containers**?  |
-| | *Enter your response here...*  |
+| | Il suffit de lancer la commande de run en rajoutant un seul argument qui doit être un des instruments disponible dans l'application soit avec ` docker run -d res/musician { piano | trumpet | flute | violin | drum  }` |
 |Question | How do we get the list of all **running containers**?  |
-| | *Enter your response here...*  |
+| | `docker ps` |
 |Question | How do we **stop/kill** one running container?  |
-| | *Enter your response here...*  |
+| | `docker stop { CONTAINER ID  | CONTAINER NAME }`. Si cette commande ne fonctionne pas, il est possible de forcer extinction avec`docker kill { CONTAINER ID  | CONTAINER NAME }`. |
 |Question | How can we check that our running containers are effectively sending UDP datagrams?  |
-| | *Enter your response here...*  |
+| | Avec tcpdump, il est possible de surveiller le traffic UDP sortant avec `tcpdump -i eth0 -s 0 -v udp`. |
 
 
 ## Task 4: implement an "auditor" Node.js application
