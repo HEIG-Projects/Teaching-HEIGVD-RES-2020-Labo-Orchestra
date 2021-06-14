@@ -148,11 +148,11 @@ When you connect to the TCP interface of the **Auditor**, you should receive an 
 |Question | How can we use the `ENTRYPOINT` statement in our Dockerfile?  |
 | | `ENTRYPOINT` a deux formes possible : <br />`ENTRYPOINT ["executable", "param1", "param2"]` ou <br />`ENTRYPOINT command param1 param2` //shell form<br />Après, il sera possible de créer un containeur avec un paramètre. (instrument dans ce laboratoire) |
 |Question | After building our Docker image, how do we use it to **run containers**?  |
-| | Il suffit de lancer la commande de run en rajoutant un seul argument qui doit être un des instruments disponible dans l'application soit avec ` docker run -d res/musician { piano | trumpet | flute | violin | drum  }` |
+| | Il suffit de lancer la commande de run en rajoutant un seul argument qui doit être un des instruments disponible dans l'application soit avec ` docker run -d res/musician { piano , trumpet , flute , violin , drum  }` |
 |Question | How do we get the list of all **running containers**?  |
 | | `docker ps` |
 |Question | How do we **stop/kill** one running container?  |
-| | `docker stop { CONTAINER ID  | CONTAINER NAME }`. Si cette commande ne fonctionne pas, il est possible de forcer extinction avec`docker kill { CONTAINER ID  | CONTAINER NAME }`. |
+| | `docker stop { CONTAINER ID , CONTAINER NAME }`. Si cette commande ne fonctionne pas, il est possible de forcer extinction avec`docker kill { CONTAINER ID , CONTAINER NAME }`. |
 |Question | How can we check that our running containers are effectively sending UDP datagrams?  |
 | | Avec tcpdump, il est possible de surveiller le traffic UDP avec `tcpdump -i eth0 -s 0 -v udp`. |
 
@@ -178,7 +178,7 @@ When you connect to the TCP interface of the **Auditor**, you should receive an 
 | #  | Topic |
 | ---  | --- |
 |Question | How do we validate that the whole system works, once we have built our Docker image? |
-|  | On peut utiliser le script fourni qui va tester que le système complet fonctionne dans un contexte normal. Cependant, il ne teste les cas particulier comme des payload reçu qui sont invalides, ou un mauvais paramètre d'entrée au musicien. <br />Pour le musicien, il a suffit de créer une image avec `docker run res/musician guitare` et `docker run res/musician` et dans les deux cas cela n'a pas fonctionné, comme souhaité avec le containeur qui s'éteint directement.<br />Par contre, il est plus difficile de vérifier qu'un payload invalide soit écarté correctement. Pour cela, nous avons créer un payload invalide depuis un containeur, et nous avons observé que ce paquet n'est pas pris en compte. On peut visualiser dans les log sur `Receiver` qu'il a bien écarter un paquets. <br />Il n'existe aucune autre entrée utilisateur possible, donc on peut en conclure que l'on peut correctement valider notre application. |
+|  | On peut utiliser le script fourni qui va tester que le système complet fonctionne dans un contexte normal. Cependant, il ne teste les cas particulier comme des payload reçu qui sont invalides, ou un mauvais paramètre d'entrée au musicien. <br />Pour le musicien, il a suffit de créer une image avec `docker run res/musician guitare` et `docker run res/musician` et dans les deux cas cela n'a pas fonctionné, comme souhaité avec le containeur qui s'éteint directement.<br />Par contre, il est plus difficile de vérifier qu'un payload invalide soit écarté correctement. Pour cela, nous avons créer un payload invalide depuis un containeur, et nous avons observé que ce paquet n'est pas pris en compte. On peut visualiser dans les log sur `Receiver` qu'il a bien écarter un paquet. <br />Il n'existe aucune autre entrée utilisateur possible, donc on peut en conclure que l'on peut correctement valider notre application. |
 
 
 ## Constraints
