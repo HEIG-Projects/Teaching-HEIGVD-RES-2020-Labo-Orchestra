@@ -5,4 +5,7 @@ RUN apt-get update && \
 
 COPY src /opt/app
 
-ENTRYPOINT ["node", "/opt/app/auditor.js"]
+WORKDIR /opt/app
+RUN npm install
+
+ENTRYPOINT ["node", "auditor.js"]
