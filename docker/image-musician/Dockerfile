@@ -5,4 +5,8 @@ RUN apt-get update && \
 
 COPY src /opt/app
 
-ENTRYPOINT ["node", "/opt/app/musician.js"]
+WORKDIR /opt/app
+
+RUN npm install
+
+ENTRYPOINT ["node", "musician.js"]
